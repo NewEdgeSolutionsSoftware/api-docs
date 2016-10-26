@@ -24,24 +24,23 @@ search: true
 
 # Introduction
 
-
+Welcome to the Bucket.io API!
 
 # Authentication
 
-> To authorize, use this code:
+> To make an authorized request, you can do it like this:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "[API-ENDPOINT]"
+  -H "Authorization: [ACCESS-TOKEN]"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `[ACCESS-TOKEN]` with your access token.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Bucket API expects for the access token to be included in all requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: [ACCESS-TOKEN]`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 </aside>
