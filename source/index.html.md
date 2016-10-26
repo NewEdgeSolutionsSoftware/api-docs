@@ -44,3 +44,19 @@ Bucket API expects for the access token to be included in all requests to the se
 <aside class="notice">
 You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 </aside>
+
+# Base URLs
+
+## Staging
+
+Base URL for staging environment is:
+
+`http://stapi.bucketdevelopment.com/v1/`
+
+<aside class="notice">
+  Everywhere you see <code>{{BASE_URL}}</code> in any section, you replace it with the above base URL.
+</aside>
+
+## Production
+
+Base URL for production is yet to be released.
