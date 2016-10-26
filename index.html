@@ -118,26 +118,27 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
+<p>Welcome to the Bucket.io API!</p>
+
 <h1 id="authentication">Authentication</h1>
 
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>To make an authorized request, you can do it like this:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"[API-ENDPOINT]"</span>
+  -H <span class="s2">"Authorization: [ACCESS-TOKEN]"</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code class="prettyprint">[ACCESS-TOKEN]</code> with your access token.</p>
 </blockquote>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Bucket API expects for the access token to be included in all requests to the server in a header that looks like the following:</p>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p><code class="prettyprint">Authorization: [ACCESS-TOKEN]</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 </aside>
 
           <h1 id="errors">Errors</h1>
