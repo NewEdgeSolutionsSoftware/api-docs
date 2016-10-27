@@ -37,7 +37,7 @@ This endpoint logs in a user.
 
 Parameter | Description
 --------- | -----------
-sessions *(object)* | An object that contains the email and password values
+session *(object)* | An object that contains the email and password values
 email *(string)* | The user's email address
 password *(string)* | The user's password
 
