@@ -173,19 +173,15 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Unauthorized &ndash; Your access token is wrong</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; The specified resources could not be found</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many resources! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -239,7 +235,7 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 </tr>
 </thead><tbody>
 <tr>
-<td>sessions <em>(object)</em></td>
+<td>session <em>(object)</em></td>
 <td>An object that contains the email and password values</td>
 </tr>
 <tr>
@@ -268,7 +264,64 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
     The log out endpoint does not return a JSON but a 204 or no content status
 </aside>
 
-          
+          <h1 id="users">Users</h1>
+
+<h2 id="create-account">Create Account</h2>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"{{BASE_URL}}/users"</span>
+  -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
+  -d <span class="s1">'{"user":
+        {"email": "c1@email.com", "password": "123456789"}
+      }'</span>
+</code></pre>
+
+<blockquote>
+<p>Result JSON</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nprH_L7zqdzzuYwRox1N"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c2@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates a new user account with the given credentials.</p>
+
+<aside class="warning">
+    Notice this endpoint does not requires an <code>access-token</code>
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {{BASE_URL}}/users</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user <em>(object)</em></td>
+<td>An object that contains the email and password values</td>
+</tr>
+<tr>
+<td>email <em>(string)</em></td>
+<td>The user&rsquo;s email address</td>
+</tr>
+<tr>
+<td>password <em>(string)</em></td>
+<td>The user&rsquo;s password</td>
+</tr>
+</tbody></table>
+
           
           
           
