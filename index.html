@@ -322,7 +322,90 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 </tr>
 </tbody></table>
 
-          
+          <h1 id="utilities">Utilities</h1>
+
+<p>This section covers utilities endpoints which, mostly, do not require an <code class="prettyprint">access token</code> to be requested.</p>
+
+<h2 id="recover-password">Recover Password</h2>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"{{BASE_URL}}/tools/recover_password"</span>
+  -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
+  -d <span class="s1">'{"email": "c1@email.com"}'</span>
+</code></pre>
+
+<blockquote>
+<p>Results in</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reset instructions sent to c1@email.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {{BASE_URL}}/tools/recover_password</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email <em>(string)</em></td>
+<td>The user&rsquo;s email address</td>
+</tr>
+</tbody></table>
+
+<h2 id="reset-password">Reset Password</h2>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"{{BASE_URL}}/tools/reset-password"</span>
+  -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
+  -d <span class="s1">'{"tool":
+        {"reset_password_token": "oPTiLgvif6nDqz7p1vZD",
+         "password": "123456789",
+         "password_confirmation": "123456789"}
+      }'</span>
+</code></pre>
+
+<blockquote>
+<p>Results in</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Password updated"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT {{BASE_URL}}/tools/reset-password</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tool <em>(object)</em></td>
+<td>An object that contains the values to change the password</td>
+</tr>
+<tr>
+<td>reset_password_token <em>(string)</em></td>
+<td>Token sent in the <code class="prettyprint">{{BASE_URL}}/tools/recover_password</code></td>
+</tr>
+<tr>
+<td>password <em>(string)</em></td>
+<td>New user&rsquo;s password</td>
+</tr>
+<tr>
+<td>password_confirmation <em>(string)</em></td>
+<td>Confirmation of the new password</td>
+</tr>
+</tbody></table>
+
           
           
           
