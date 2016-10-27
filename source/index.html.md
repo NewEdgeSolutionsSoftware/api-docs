@@ -51,7 +51,7 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 
 Base URL for staging environment is:
 
-`http://stapi.bucketdevelopment.com/v1/`
+`http://stapi.bucketdevelopment.com/v1`
 
 <aside class="notice">
   Everywhere you see <code>{{BASE_URL}}</code> in any section, you replace it with the above base URL.
