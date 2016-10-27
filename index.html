@@ -147,7 +147,7 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 
 <p>Base URL for staging environment is:</p>
 
-<p><code class="prettyprint">http://stapi.bucketdevelopment.com/v1/</code></p>
+<p><code class="prettyprint">http://stapi.bucketdevelopment.com/v1</code></p>
 
 <aside class="notice">
   Everywhere you see <code>{{BASE_URL}}</code> in any section, you replace it with the above base URL.
@@ -200,73 +200,73 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
           <h1 id="sessions">Sessions</h1>
 
 <h2 id="log-in">Log In</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"{{BASE_URL}}/sessions"</span>
+  -H <span class="s2">"Authorization: [ACCESS-TOKEN]"</span>
+  -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
+  -d <span class="s1">'{"session":
+        {"email": "c1@email.com", "password": "123456789"}
+      }'</span>
 </code></pre>
 
 <blockquote>
-<p>Result:</p>
+<p>Result JSON</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pdTFgmeAuua-VLjxRtzx"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint logs in a user.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">POST {{BASE_URL}}/sessions</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>sessions <em>(object)</em></td>
+<td>An object that contains the email and password values</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>email <em>(string)</em></td>
+<td>The user&rsquo;s email address</td>
+</tr>
+<tr>
+<td>password <em>(string)</em></td>
+<td>The user&rsquo;s password</td>
 </tr>
 </tbody></table>
 
 <h2 id="log-out">Log Out</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"{{BASE_URL}}/sessions"</span>
+  -H <span class="s2">"Authorization: [ACCESS-TOKEN]"</span>
+  -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
 </code></pre>
-
-<blockquote>
-<p>Result:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="w">
-</span></code></pre>
 
 <p>This endpoint logs out a user.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">DELETE {{BASE_URL}}/sessions</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
+<aside class="notice">
+    The log out endpoint does not return a JSON but a 204 or no content status
+</aside>
 
           
           
