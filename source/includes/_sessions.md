@@ -4,7 +4,6 @@
 
 ```shell
 curl -X POST "{{BASE_URL}}/sessions"
-  -H "Authorization: [ACCESS-TOKEN]"
   -H "Accept: application/vnd.ask.v1"
   -d '{"session":
   		{"email": "c1@email.com", "password": "123456789"}
