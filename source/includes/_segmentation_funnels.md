@@ -62,7 +62,7 @@ curl -X POST "{{BASE_URL}}/segmentation_funnels"
 }
 ```
 
-### List of attributes
+### Query Parameters
 
 attribute | type | required
 ----------|------|---------
@@ -70,9 +70,82 @@ name | string | true
 internal_name | string | false
 quiz_type_id | integer | false
 
+### HTTP Request
+
+`POST {{BASE_URL}}/segmentation_funnels`
+
 
 ## List a User's Segmentation Funnels
 
+Returns a list of segmentation funnels filtered by their status.
+
+In the `meta` attribute the object `quantities` specifies the amount of funnels in each status.
+
+```shell
+curl -X GET "{{BASE_URL}}/segmentation_funnels/?filter=draft"
+  -H "Accept: application/vnd.ask.v1"
+  -H "Authorization: [ACCESS-TOKEN]"
+```
+
+> Returns an array of segmentation funnels
+
+```json
+{
+  "data": [
+    {
+      "id": "5",
+      "type": "segmentation_funnels",
+      "attributes": {
+        "name": "Otro",
+        "internal_name": "Juancho",
+        "status": "draft",
+        "funnel_type": "outcome",
+        "wp_text": null,
+        "wp_bg_image": null,
+        "welcome_page": false,
+        "updated_at": "Nov 02, 2016"
+      },
+      "relationships": {
+        "quiz_type": {
+          "data": {
+            "id": "4",
+            "type": "quiz_types"
+          }
+        }
+      }
+    },
+    {
+      "id": "2",
+      "type": "segmentation_funnels"
+    },
+    {
+      "id": "4",
+      "type": "segmentation_funnels"
+    }
+  ],
+  "included": [
+    {
+    }
+  ],
+  "meta": {
+    "quantities": {
+      "in_draft": 3,
+      "in_active": 0,
+      "in_archive": 0
+    }
+  }
+}
+```
+
+### HTTP Request
+
+`GET {{BASE_URL}}/segmentation_funnels/?filter=draft`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+filter *(string)* | can be one of `[draf, active, archive]`
 
 ## Change a Segmentation Funnel's Status
 
