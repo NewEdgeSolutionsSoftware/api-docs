@@ -197,7 +197,6 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 
 <h2 id="log-in">Log In</h2>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"{{BASE_URL}}/sessions"</span>
-  -H <span class="s2">"Authorization: [ACCESS-TOKEN]"</span>
   -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
   -d <span class="s1">'{"session":
         {"email": "c1@email.com", "password": "123456789"}
@@ -406,7 +405,186 @@ You must replace <code>[ACCESS-TOKEN]</code> with your access token.
 </tr>
 </tbody></table>
 
-          
+          <h1 id="segmentation-funnels">Segmentation Funnels</h1>
+
+<p>This section covers all about creating and working with segmentation funnels.</p>
+
+<h2 id="create-segmentation-funnel">Create Segmentation Funnel</h2>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"{{BASE_URL}}/segmentation_funnels"</span>
+  -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
+  -H <span class="s2">"Authorization: [ACCESS-TOKEN]"</span>
+  -d <span class="s1">'{"segmentation_funnel":
+        {"name": "Funnel Name",
+         "internal_name": "SF001",
+         "quiz_type_id": 1
+        }
+      }'</span>
+</code></pre>
+
+<blockquote>
+<p>Resulting JSON</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"segmentation_funnels"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otro"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Juancho"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"funnel_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outcome"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"wp_text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"wp_bg_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"welcome_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nov 02, 2016"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"quiz_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quiz_types"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sections"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sections"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>attribute</th>
+<th>type</th>
+<th>required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+</tr>
+<tr>
+<td>internal_name</td>
+<td>string</td>
+<td>false</td>
+</tr>
+<tr>
+<td>quiz_type_id</td>
+<td>integer</td>
+<td>false</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {{BASE_URL}}/segmentation_funnels</code></p>
+
+<h2 id="list-a-user-39-s-segmentation-funnels">List a User&rsquo;s Segmentation Funnels</h2>
+
+<p>Returns a list of segmentation funnels filtered by their status.</p>
+
+<p>In the <code class="prettyprint">meta</code> attribute the object <code class="prettyprint">quantities</code> specifies the amount of funnels in each status.</p>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"{{BASE_URL}}/segmentation_funnels/?filter=draft"</span>
+  -H <span class="s2">"Accept: application/vnd.ask.v1"</span>
+  -H <span class="s2">"Authorization: [ACCESS-TOKEN]"</span>
+</code></pre>
+
+<blockquote>
+<p>Returns an array of segmentation funnels</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"segmentation_funnels"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otro"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Juancho"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"funnel_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outcome"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"wp_text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"wp_bg_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"welcome_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nov 02, 2016"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"quiz_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quiz_types"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"segmentation_funnels"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"segmentation_funnels"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"quantities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"in_draft"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"in_active"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"in_archive"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET {{BASE_URL}}/segmentation_funnels/?filter=draft</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter <em>(string)</em></td>
+<td>can be one of <code class="prettyprint">[draf, active, archive]</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="change-a-segmentation-funnel-39-s-status">Change a Segmentation Funnel&rsquo;s Status</h2>
+
+<h2 id="edit-segmentation-funnel">Edit Segmentation Funnel</h2>
+
+<h2 id="list-a-segmentation-funnel-39-s-outcomes">List a Segmentation Funnel&rsquo;s Outcomes</h2>
+
+<h2 id="update-a-segmentation-funnel-39-s-welcome-page">Update a Segmentation Funnel&rsquo;s Welcome Page</h2>
+
+<h2 id="deactivate-a-segmentation-funnel-39-s-welcome-page">Deactivate a Segmentation Funnel&rsquo;s Welcome Page</h2>
+
           
           
           
