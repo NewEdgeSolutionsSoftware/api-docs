@@ -150,6 +150,48 @@ filter *(string)* | can be one of `[draf, active, archive]`
 
 ## Edit Segmentation Funnel
 
+Finds and return the information of a segmentation funnel
+
+```shell
+curl -X GET "{{BASE_URL}}/segmentation_funnels/1/edit"
+  -H "Accept: application/vnd.ask.v1"
+  -H "Authorization: [ACCESS-TOKEN]"
+```
+
+> Returns
+
+```json
+{
+  "data": {
+    "id": "1",
+    "type": "segmentation_funnels",
+    "attributes": {
+      "name": "Some name",
+      "internal_name": "Some internal name",
+      "wp_text": null,
+      "wp_bg_image": null,
+      "welcome_page": false
+    },
+    "relationships": {
+      "sections": {}
+    }
+  },
+  "included": [
+    {}
+  ]
+}
+```
+
+### HTTP Request
+
+`GET {{BASE_URL}}/segmentation_funnels/:id/edit`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id *(integer)* | id of the segmentation funnel to edit
+
 
 <%= partial 'includes/non_crud' %>
 
