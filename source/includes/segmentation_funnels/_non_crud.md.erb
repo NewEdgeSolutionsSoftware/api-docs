@@ -53,21 +53,52 @@ Parameter | Description
 id *(integer)* | id of the segmentation funnel
 to *(string)* | can be one of `[archive | draft | active]`
 
+
 ## List a Segmentation Funnel's Outcomes
 
 ```shell
-
+curl -X GET "{{BASE_URL}}/segmentation_funnels/1/outcomes"
+  -H "Accept: application/vnd.ask.v1"
+  -H "Authorization: [ACCESS-TOKEN]"
 ```
 
 > Returns a JSON object like
 
 ```json
-
+{
+  "data": [
+    {
+      "id": "6",
+      "type": "outcomes",
+      "attributes": {
+        "name": "Outcome #3",
+        "internal_name": "OC3",
+        "status": "completed",
+        "outcome_type_label": "redirect",
+        "outcome_type_number": 1,
+        "description": "A given outcome witha given output",
+        "redirect_link": "http://ideaware.co",
+        "position": 1
+      }
+    },
+    {
+      "id": "9",
+      "type": "outcomes",
+      "attributes": {}
+    }
+  ]
+}
 ```
 
 ### HTTP Request
 
+`GET "{{BASE_URL}}/segmentation_funnels/:id/outcomes`
+
 ### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id *(integer)* | id of the segmentation funnel
 
 
 ## Update a Segmentation Funnel's Welcome Page
