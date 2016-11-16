@@ -1,10 +1,104 @@
 ## Change a Segmentation Funnel's Status
 
+Changes a funnel's status to any of:
+
+- archived
+- draft
+- active
+
+```shell
+curl -X PUT "{{BASE_URL}}/segmentation_funnels/1/actions/move?to=archive"
+  -H "Accept: application/vnd.ask.v1"
+  -H "Authorization: [ACCESS-TOKEN]"
+```
+
+> Returns a JSON object like
+
+```json
+{
+  "data": {
+    "id": "1",
+    "type": "segmentation_funnels",
+    "attributes": {
+      "name": "Some name",
+      "internal_name": "Some internal name",
+      "status": "archived",
+      "wp_text": null,
+      "wp_bg_image": null,
+      "welcome_page": false,
+      "updated_at": "Nov 16, 2016"
+    },
+    "relationships": {
+      "quiz_type": {
+        "data": {}
+      },
+      "sections": {
+        "data": [
+          {}
+        ]
+      }
+    }
+  }
+}
+```
+
+### HTTP Request
+
+`PUT {{BASE_URL}}/segmentation_funnels/:id/actions/move?to=[archive|draf|active]`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id *(integer)* | id of the segmentation funnel
+to *(string)* | can be one of `[archive | draft | active]`
+
 ## List a Segmentation Funnel's Outcomes
+
+```shell
+
+```
+
+> Returns a JSON object like
+
+```json
+
+```
+
+### HTTP Request
+
+### Query Parameters
 
 
 ## Update a Segmentation Funnel's Welcome Page
 
+```shell
+
+```
+
+> Returns a JSON object like
+
+```json
+
+```
+
+### HTTP Request
+
+### Query Parameters
+
 
 ## Deactivate a Segmentation Funnel's Welcome Page
 
+```shell
+
+```
+
+> Returns a JSON object like
+
+```json
+
+```
+
+### HTTP Request
+
+### Query Parameters
